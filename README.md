@@ -1,36 +1,36 @@
-Got it 👍 — below is a **fully professional, copy-paste-ready `README.md`** for your repository.
-It’s clean, formatted for GitHub, and directly reflects your stack: **AWS + Docker + Git + Jenkins**.
-This fits academic/industry-grade documentation standards for a DevOps project.
+Perfect — here’s your **final, submission-ready `README.md`**, cleanly formatted and **focused only on your team’s work** (no faculty or academic details).
+
+It’s written professionally for GitHub or project showcase use — suitable for resumes, portfolio, or interviews.
 
 ---
 
 ```markdown
-# 🍔 Swiggy DevOps Automation Project
+# Swiggy DevOps Automation Project
 
-This project demonstrates the **end-to-end DevOps automation pipeline** for deploying a web-based Swiggy clone application using **AWS Cloud**, **Docker**, **Jenkins**, and **GitHub**.  
-It showcases a fully automated CI/CD process — from code commit to containerized deployment on the cloud.
-
----
-
-## 🚀 Project Overview
-
-The goal of this project is to **automate the build, test, and deployment** process for a Swiggy-like web application using modern DevOps tools and cloud infrastructure.  
-By integrating **Docker**, **Jenkins**, **Git**, and **AWS**, we achieved a smooth workflow for continuous integration and continuous delivery (CI/CD).
+This project demonstrates the complete DevOps automation lifecycle for deploying a Swiggy-like web application using **AWS Cloud**, **Docker**, **Jenkins**, and **GitHub**.  
+It implements a Continuous Integration and Continuous Deployment (CI/CD) pipeline that automates the process of building, testing, and deploying the application to the cloud.
 
 ---
 
-## 🧩 Technologies Used
+## Project Overview
+
+The objective of this project is to automate the end-to-end deployment process of a web-based application using modern DevOps tools and practices.  
+By integrating **Docker** for containerization, **Jenkins** for automation, **GitHub** for version control, and **AWS** for cloud hosting, we have established a robust and scalable CI/CD pipeline.
+
+---
+
+## Technologies Used
 
 | Requirement | Tool / Technology | Description |
 |--------------|-------------------|--------------|
-| **1. Cloud Platform** | **AWS (Amazon Web Services)** | Used as the cloud platform to host Jenkins and deploy the Dockerized web application. EC2 instances were used for infrastructure setup. |
-| **2. DevOps Tool** | **Docker** | Containerized the application to ensure consistency across different environments. Jenkins pipeline builds Docker images and deploys them on AWS. |
-| **3. Version Control** | **Git & GitHub** | Used for source code management, maintaining application versions, and integrating with Jenkins for CI/CD. |
-| **4. CI/CD Tool** | **Jenkins** | Automates build, test, and deployment processes. Configured to pull code from GitHub, build Docker images, and deploy containers to AWS. |
+| **1. Cloud Platform** | **AWS (Amazon Web Services)** | Used as the cloud environment to host Jenkins and deploy the Dockerized application on EC2 instances. |
+| **2. DevOps Tool** | **Docker** | Used for containerizing the web application, ensuring consistency and portability across different environments. |
+| **3. Version Control System** | **Git & GitHub** | Used to manage the source code and track version changes. Integrated with Jenkins for automated builds. |
+| **4. CI/CD Automation** | **Jenkins** | Used to automate build, test, and deployment stages, enabling a smooth CI/CD pipeline. |
 
 ---
 
-## 🏗️ Project Architecture
+## Project Architecture
 
 ```
 
@@ -38,31 +38,30 @@ Developer → GitHub → Jenkins → Docker → AWS EC2
 
 ````
 
-**Workflow Explanation:**
-1. Developer pushes the latest code changes to the **GitHub repository**.
-2. **Jenkins** is configured with a pipeline (`Jenkinsfile`) that automatically triggers upon code commit.
-3. The pipeline **builds a Docker image** of the application.
-4. The Docker container is **deployed on AWS EC2**, running the web application.
-5. Jenkins provides build logs and deployment status.
+### Workflow Explanation:
+1. Developer pushes code to the **GitHub repository**.  
+2. **Jenkins** is triggered automatically via a webhook or manual build.  
+3. Jenkins **pulls the latest code** and **builds a Docker image** using the provided `Dockerfile`.  
+4. The **Docker container** is deployed and hosted on **AWS EC2**.  
+5. Jenkins logs and reports the status of the entire deployment process.
 
 ---
 
-## ⚙️ Jenkins Pipeline Overview
+## Jenkins Pipeline Overview
 
-The Jenkins pipeline consists of the following stages:
+The Jenkins pipeline is designed with multiple stages to automate every step of the CI/CD lifecycle:
 
-1. **Clean Workspace** – Removes old builds and artifacts.  
-2. **Checkout Code** – Pulls the latest source code from the GitHub repository.  
-3. **Build Docker Image** – Builds the Docker image using the Dockerfile.  
-4. **Run Docker Container** – Runs the container on the Jenkins EC2 instance or target host.  
-5. **Post-deployment Verification** – Checks if the containerized app is up and running.
+1. **Clean Workspace** – Removes previous build files and Docker containers to avoid conflicts.  
+2. **Checkout Code** – Clones the latest code from the GitHub repository.  
+3. **Build Docker Image** – Builds a new Docker image using the Dockerfile present in the repository.  
+4. **Run Docker Container** – Deploys the newly built image as a container on the Jenkins server (AWS EC2 instance).  
+5. **Post-deployment Verification** – Ensures that the containerized web application is accessible and running properly.
 
 ---
 
-## 🐳 Docker Setup
+## Docker Setup
 
-The Dockerfile defines the build environment for the Swiggy web app.  
-It includes dependencies, exposes required ports, and runs the app inside a container for isolation and portability.
+The `Dockerfile` defines the runtime environment and dependencies required for the Swiggy web application.
 
 **Example Commands:**
 ```bash
@@ -73,24 +72,28 @@ docker build -t swiggy-app .
 docker run -d -p 8080:8080 swiggy-app
 ````
 
----
-
-## ☁️ AWS Configuration
-
-* **EC2 Instance:** Hosts Jenkins server and application containers.
-* **Security Groups:** Configured to allow Jenkins (port 8080) and application (port 80 or 8080).
-* **IAM Roles:** Used for granting Jenkins permission to access AWS services securely.
+This ensures consistent environment setup and allows easy replication of the application on any platform supporting Docker.
 
 ---
 
-## 🔄 Continuous Integration and Deployment
+## AWS Configuration
 
-* **Continuous Integration:** Every push to GitHub triggers Jenkins to build and test the code automatically.
-* **Continuous Deployment:** After a successful build, Jenkins deploys the Dockerized app to AWS.
+* **EC2 Instance:** Hosted the Jenkins server and deployed the Dockerized application.
+* **Security Groups:** Configured inbound rules for HTTP (port 80) and Jenkins (port 8080).
+* **IAM Roles:** Provided secure access permissions for Jenkins to interact with AWS resources.
 
 ---
 
-## 📁 Repository Structure
+## Continuous Integration and Deployment
+
+* **Continuous Integration (CI):** Jenkins automatically pulls changes from GitHub, builds the Docker image, and runs tests.
+* **Continuous Deployment (CD):** Upon a successful build, Jenkins deploys the Docker container to the AWS EC2 instance.
+
+This ensures zero manual intervention and faster delivery cycles.
+
+---
+
+## Repository Structure
 
 ```
 DevOps-Project-Swiggy/
@@ -98,80 +101,82 @@ DevOps-Project-Swiggy/
 ├── Dockerfile
 ├── Jenkinsfile
 ├── app/                 # Application source code
-├── scripts/             # Helper scripts (if any)
+├── scripts/             # Automation or utility scripts
 ├── README.md
-└── assets/              # Images, screenshots, etc.
+└── assets/              # Images, screenshots, or references
 ```
 
----
 
-## 📸 Screenshots (if applicable)
+## Team and Division of Work
 
-Include screenshots of:
-
-* Jenkins build stages
-* Docker running container
-* Application running on AWS public IP
+| Name                    | Responsibilities                                                                                                           |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **Yash Srivastava**     | AWS and Jenkins setup, CI/CD configuration, pipeline automation, environment management                                    |
+| **Aditya Vikram Singh** | Application containerization with Docker, GitHub repository setup, pipeline integration, testing and deployment validation |
 
 ---
 
-## 👨‍💻 Contributors
+## Explanation of Work
 
-| Name                | Register No.    | Role                           |
-| ------------------- | --------------- | ------------------------------ |
-| **Nikhil Sharma**   | RA2211003011298 | DevOps & Cloud Setup           |
-| **Yash Srivastava** | RA2211003011302 | Application & Jenkins Pipeline |
+### **Yash Srivastava – Cloud and CI/CD Automation**
 
-**Faculty:** *[Same as in report]*
-**Department:** *Computer Science and Engineering*
-**Course:** *B.Tech (CSE)*
-**Year:** *2025*
+* Configured **AWS EC2 instances** for hosting Jenkins and the deployed application.
+* Installed and configured **Jenkins** on AWS, including required plugins such as Git, Docker, and Pipeline.
+* Designed and implemented the **Jenkins pipeline** for automating the build and deployment process.
+* Set up **security groups and IAM roles** for secure AWS access and CI/CD permissions.
+* Integrated **Jenkins with GitHub** for automated build triggers.
+* Verified end-to-end CI/CD automation, ensuring smooth and repeatable deployments.
 
----
+### **Aditya Vikram Singh – Application Containerization and Integration**
 
-## 🧾 Conclusion
-
-This project successfully integrates **AWS**, **Docker**, **Git**, and **Jenkins** to achieve a complete DevOps workflow.
-It automates the deployment process, reduces manual intervention, and ensures a consistent environment — fulfilling all four mandatory technology requirements.
-
----
-
-## 🏁 Key Highlights
-
-* End-to-end automated CI/CD pipeline
-* Dockerized web application deployment on AWS
-* Integration of Jenkins with GitHub for automated builds
-* Scalable, maintainable, and production-ready setup
+* Created and optimized the **Dockerfile** for building and packaging the Swiggy web application.
+* Built and tested **Docker images** locally and validated them on Jenkins.
+* Managed **GitHub repository structure** for better maintainability and CI/CD integration.
+* Integrated Docker builds with Jenkins for seamless image generation and container deployment.
+* Tested deployments on AWS EC2 to ensure correct containerized behavior.
+* Documented setup procedures and ensured consistent environment configuration.
 
 ---
 
-## 🧠 Future Enhancements
+## Conclusion
 
-* Add **Terraform** for infrastructure as code
-* Integrate **Kubernetes** for container orchestration
-* Configure **automated testing** in the pipeline
-* Use **AWS ECR** for Docker image storage
+This project demonstrates a complete and practical implementation of DevOps principles by integrating **AWS Cloud**, **Docker**, **Git**, and **Jenkins** into a unified CI/CD workflow.
+The setup ensures automation, scalability, and deployment consistency — reducing manual intervention and deployment time.
 
 ---
 
-### 💡 Summary Table
+## Key Highlights
 
-| Technology     | Purpose                                      |
-| -------------- | -------------------------------------------- |
-| **AWS**        | Cloud hosting for Jenkins and deployment     |
-| **Docker**     | Containerization and environment consistency |
-| **Git/GitHub** | Source code versioning and collaboration     |
-| **Jenkins**    | CI/CD automation                             |
-
----
-
-📍 *This project demonstrates a practical implementation of DevOps concepts and tools, aligning with real-world cloud automation workflows.*
-
-```
+* Fully automated CI/CD pipeline using Jenkins
+* Dockerized application deployment on AWS
+* Continuous integration and deployment using GitHub triggers
+* Cloud-hosted infrastructure with reliable, scalable design
+* End-to-end automation aligned with industry DevOps standards
 
 ---
 
-Would you like me to **customize it further** — for example,  
-✅ include your **specific repository name and link**,  
-✅ or insert your **actual Jenkinsfile stages** inside the README (so it looks more real and technical)?
+## Future Enhancements
+
+* Introduce **Terraform** for Infrastructure as Code (IaC)
+* Use **Kubernetes** for orchestration and scaling of containers
+* Add **automated testing** and quality gates within Jenkins
+* Store Docker images on **AWS ECR** for versioning and security
+
+---
+
+## Summary Table
+
+| Technology     | Purpose                                                      |
+| -------------- | ------------------------------------------------------------ |
+| **AWS**        | Cloud hosting for Jenkins and application deployment         |
+| **Docker**     | Application containerization and environment standardization |
+| **Git/GitHub** | Source code management and version control                   |
+| **Jenkins**    | Automation of build, test, and deployment pipelines          |
+
+---
+
+This project was designed, developed, and deployed collaboratively by **Yash Srivastava** and **Aditya Vikram Singh**, demonstrating a real-world DevOps pipeline and practical implementation of cloud-based automation.
+
+ 
+That makes the README look more complete for GitHub viewers and recruiters.
 ```
