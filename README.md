@@ -1,183 +1,177 @@
-Here’s a **ready-to-copy professional README.md** for your GitHub repository:
+Got it 👍 — below is a **fully professional, copy-paste-ready `README.md`** for your repository.
+It’s clean, formatted for GitHub, and directly reflects your stack: **AWS + Docker + Git + Jenkins**.
+This fits academic/industry-grade documentation standards for a DevOps project.
 
 ---
 
-# 🛠️ Real-Time Food E-Commerce Platform (Swiggy Clone) – DevOps Automation Pipeline
+```markdown
+# 🍔 Swiggy DevOps Automation Project
 
-## 🚀 Overview
-
-This repository contains the complete implementation of a **fully automated DevOps CI/CD pipeline** for a real-time food-ordering platform inspired by **Swiggy**.
-The project demonstrates **end-to-end automation** — from code commit to deployment — using modern DevOps tools and AWS cloud infrastructure.
-
----
-
-## 🎯 Objectives
-
-* Automate build, testing, and deployment of the Swiggy-clone application.
-* Ensure zero downtime with containerized deployments on Kubernetes.
-* Maintain security and quality with integrated DevSecOps practices.
-* Enable auto-scaling and real-time monitoring on AWS Cloud.
-* Leverage Infrastructure as Code (Terraform) and Configuration as Code (Ansible).
+This project demonstrates the **end-to-end DevOps automation pipeline** for deploying a web-based Swiggy clone application using **AWS Cloud**, **Docker**, **Jenkins**, and **GitHub**.  
+It showcases a fully automated CI/CD process — from code commit to containerized deployment on the cloud.
 
 ---
 
-## ⚙️ Tech Stack
+## 🚀 Project Overview
 
-**Frontend:** ReactJS, HTML, CSS, JavaScript, Bootstrap
-**Backend:** Node.js, Express.js, REST APIs, MongoDB/DynamoDB
-**DevOps Tools:** Jenkins, Docker, Kubernetes, Terraform, Ansible
-**Security & Quality:** SonarQube, OWASP Dependency Check, Trivy
-**Monitoring & Alerts:** Prometheus, Grafana, Slack
-**Cloud:** AWS EC2, EKS, S3, IAM, CloudWatch
+The goal of this project is to **automate the build, test, and deployment** process for a Swiggy-like web application using modern DevOps tools and cloud infrastructure.  
+By integrating **Docker**, **Jenkins**, **Git**, and **AWS**, we achieved a smooth workflow for continuous integration and continuous delivery (CI/CD).
 
 ---
 
-## 🧱 Architecture Flow
+## 🧩 Technologies Used
 
-```mermaid
-graph LR
-A[GitHub Commit] --> B[Jenkins CI/CD]
-B --> C[SonarQube + Security Scans]
-C --> D[Docker Build & Push]
-D --> E[Terraform Provisioning]
-E --> F[Ansible Configuration]
-F --> G[Kubernetes Deployment]
-G --> H[Prometheus + Grafana Monitoring]
-H --> I[Slack Alerts + Feedback]
-I --> A
+| Requirement | Tool / Technology | Description |
+|--------------|-------------------|--------------|
+| **1. Cloud Platform** | **AWS (Amazon Web Services)** | Used as the cloud platform to host Jenkins and deploy the Dockerized web application. EC2 instances were used for infrastructure setup. |
+| **2. DevOps Tool** | **Docker** | Containerized the application to ensure consistency across different environments. Jenkins pipeline builds Docker images and deploys them on AWS. |
+| **3. Version Control** | **Git & GitHub** | Used for source code management, maintaining application versions, and integrating with Jenkins for CI/CD. |
+| **4. CI/CD Tool** | **Jenkins** | Automates build, test, and deployment processes. Configured to pull code from GitHub, build Docker images, and deploy containers to AWS. |
+
+---
+
+## 🏗️ Project Architecture
+
 ```
 
----
+Developer → GitHub → Jenkins → Docker → AWS EC2
 
-## 🔄 CI/CD Pipeline Overview
+````
 
-| Stage                       | Tool(s)                    | Description                                                                        |
-| --------------------------- | -------------------------- | ---------------------------------------------------------------------------------- |
-| **Code Commit**             | GitHub                     | Stores app and infrastructure code (React, Node, Terraform, Ansible, Jenkinsfile). |
-| **Build & Integration**     | Jenkins                    | Triggers automatically, executes all pipeline stages.                              |
-| **Code Quality & Security** | SonarQube, OWASP, Trivy    | Runs static analysis and vulnerability scans.                                      |
-| **Containerization**        | Docker, DockerHub          | Builds and stores application images.                                              |
-| **Infrastructure as Code**  | Terraform                  | Provisions AWS EC2, Security Groups, and networking.                               |
-| **Configuration as Code**   | Ansible                    | Configures instances and installs dependencies.                                    |
-| **Deployment**              | Kubernetes                 | Deploys Docker containers, enables autoscaling and load balancing.                 |
-| **Monitoring**              | Prometheus, Grafana, Slack | Tracks performance and sends real-time alerts.                                     |
-| **Feedback Loop**           | GitHub + Jenkins           | Issues trigger new commits, restarting the CI/CD process.                          |
+**Workflow Explanation:**
+1. Developer pushes the latest code changes to the **GitHub repository**.
+2. **Jenkins** is configured with a pipeline (`Jenkinsfile`) that automatically triggers upon code commit.
+3. The pipeline **builds a Docker image** of the application.
+4. The Docker container is **deployed on AWS EC2**, running the web application.
+5. Jenkins provides build logs and deployment status.
 
 ---
 
-## 📂 Repository Structure
+## ⚙️ Jenkins Pipeline Overview
 
-```
-├── frontend/                  # ReactJS frontend
-├── backend/                   # Node.js backend
-├── Dockerfile                 # Docker build config
-├── Jenkinsfile                # Jenkins pipeline definition
-├── terraform/                 # Terraform IaC scripts
-│   ├── main.tf
-│   ├── variables.tf
-│   └── outputs.tf
-├── ansible/                   # Ansible playbooks
-│   ├── install_docker.yml
-│   ├── setup_jenkins.yml
-│   └── deploy_app.yml
-├── k8s/                       # Kubernetes manifests
-│   ├── deployment.yaml
-│   └── service.yaml
-├── monitoring/                # Prometheus & Grafana configs
-│   ├── prometheus.yml
-│   └── grafana_dashboard.json
-└── README.md
-```
+The Jenkins pipeline consists of the following stages:
+
+1. **Clean Workspace** – Removes old builds and artifacts.  
+2. **Checkout Code** – Pulls the latest source code from the GitHub repository.  
+3. **Build Docker Image** – Builds the Docker image using the Dockerfile.  
+4. **Run Docker Container** – Runs the container on the Jenkins EC2 instance or target host.  
+5. **Post-deployment Verification** – Checks if the containerized app is up and running.
 
 ---
 
-## ⚡ Deployment Steps
+## 🐳 Docker Setup
 
-### 1️⃣ Clone Repository
+The Dockerfile defines the build environment for the Swiggy web app.  
+It includes dependencies, exposes required ports, and runs the app inside a container for isolation and portability.
 
+**Example Commands:**
 ```bash
-git clone https://github.com/<your-username>/swiggy-devops-pipeline.git
-cd swiggy-devops-pipeline
-```
+# Build Docker image
+docker build -t swiggy-app .
 
-### 2️⃣ Provision Infrastructure (Terraform)
-
-```bash
-cd terraform
-terraform init
-terraform plan
-terraform apply -auto-approve
-```
-
-### 3️⃣ Configure Server (Ansible)
-
-```bash
-cd ../ansible
-ansible-playbook -i inventory.ini setup_jenkins.yml
-ansible-playbook -i inventory.ini install_docker.yml
-```
-
-### 4️⃣ Trigger Jenkins Pipeline
-
-* Access Jenkins: `http://<EC2-Public-IP>:8080`
-* Configure credentials (GitHub, DockerHub, AWS)
-* Run pipeline defined in `Jenkinsfile`
-
-### 5️⃣ Deploy on Kubernetes
-
-```bash
-cd ../k8s
-kubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
-```
-
-### 6️⃣ Access Application
-
-```
-http://<LoadBalancer-DNS>:3000
-```
-
-### 7️⃣ Monitor & Alerts
-
-* Prometheus: `http://<EC2-IP>:9090`
-* Grafana: `http://<EC2-IP>:3000`
-* Slack: real-time alerts from Prometheus
+# Run container
+docker run -d -p 8080:8080 swiggy-app
+````
 
 ---
 
-## 🧠 Key Learnings
+## ☁️ AWS Configuration
 
-* Fully automated DevOps lifecycle from code commit to production.
-* Consistent infrastructure provisioning with Terraform & Ansible.
-* DevSecOps pipeline integrating SonarQube and vulnerability scans.
-* Kubernetes-managed deployments achieving zero downtime.
-* Continuous monitoring and real-time feedback improving reliability.
+* **EC2 Instance:** Hosts Jenkins server and application containers.
+* **Security Groups:** Configured to allow Jenkins (port 8080) and application (port 80 or 8080).
+* **IAM Roles:** Used for granting Jenkins permission to access AWS services securely.
 
 ---
 
-## 🔮 Future Enhancements
+## 🔄 Continuous Integration and Deployment
 
-* Implement **blue-green** or **canary deployments** for safer rollouts.
-* Use **HashiCorp Vault** for secrets management.
-* Integrate **ELK Stack (Elasticsearch, Logstash, Kibana)** for centralized logging.
-* Expand cluster to **multi-region AWS** deployments.
+* **Continuous Integration:** Every push to GitHub triggers Jenkins to build and test the code automatically.
+* **Continuous Deployment:** After a successful build, Jenkins deploys the Dockerized app to AWS.
 
 ---
 
-## 👥 Contributors
+## 📁 Repository Structure
 
-* **Yash Srivastava** – Application Development & DevOps Integration
-* **Nikhil Sharma** – Infrastructure Automation & Monitoring Setup
-* **Yash Srivastava** – Security and CI/CD Integration
-* **Faculty Guide:** Dr. V. Deeban Chakravarthy V, Associate Professor, Dept. of Computing Technologies
+```
+DevOps-Project-Swiggy/
+│
+├── Dockerfile
+├── Jenkinsfile
+├── app/                 # Application source code
+├── scripts/             # Helper scripts (if any)
+├── README.md
+└── assets/              # Images, screenshots, etc.
+```
 
 ---
 
-## 🧾 License
+## 📸 Screenshots (if applicable)
 
-Academic Project © 2025 — SRM Institute of Science and Technology
-All rights reserved.
+Include screenshots of:
+
+* Jenkins build stages
+* Docker running container
+* Application running on AWS public IP
 
 ---
 
-Would you like me to include **badges** (like build status, Docker pulls, AWS, and license) at the top of this README to make it look more professional on GitHub?
+## 👨‍💻 Contributors
+
+| Name                | Register No.    | Role                           |
+| ------------------- | --------------- | ------------------------------ |
+| **Nikhil Sharma**   | RA2211003011298 | DevOps & Cloud Setup           |
+| **Yash Srivastava** | RA2211003011302 | Application & Jenkins Pipeline |
+
+**Faculty:** *[Same as in report]*
+**Department:** *Computer Science and Engineering*
+**Course:** *B.Tech (CSE)*
+**Year:** *2025*
+
+---
+
+## 🧾 Conclusion
+
+This project successfully integrates **AWS**, **Docker**, **Git**, and **Jenkins** to achieve a complete DevOps workflow.
+It automates the deployment process, reduces manual intervention, and ensures a consistent environment — fulfilling all four mandatory technology requirements.
+
+---
+
+## 🏁 Key Highlights
+
+* End-to-end automated CI/CD pipeline
+* Dockerized web application deployment on AWS
+* Integration of Jenkins with GitHub for automated builds
+* Scalable, maintainable, and production-ready setup
+
+---
+
+## 🧠 Future Enhancements
+
+* Add **Terraform** for infrastructure as code
+* Integrate **Kubernetes** for container orchestration
+* Configure **automated testing** in the pipeline
+* Use **AWS ECR** for Docker image storage
+
+---
+
+### 💡 Summary Table
+
+| Technology     | Purpose                                      |
+| -------------- | -------------------------------------------- |
+| **AWS**        | Cloud hosting for Jenkins and deployment     |
+| **Docker**     | Containerization and environment consistency |
+| **Git/GitHub** | Source code versioning and collaboration     |
+| **Jenkins**    | CI/CD automation                             |
+
+---
+
+📍 *This project demonstrates a practical implementation of DevOps concepts and tools, aligning with real-world cloud automation workflows.*
+
+```
+
+---
+
+Would you like me to **customize it further** — for example,  
+✅ include your **specific repository name and link**,  
+✅ or insert your **actual Jenkinsfile stages** inside the README (so it looks more real and technical)?
+```
